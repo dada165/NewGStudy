@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<style>
+    .back {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .right {
+        padding-left: 10%;
+        padding-top: 5%;
+        padding-right: 5%;
+    }
+
+    .inp {
+        background-color: lightgrey;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+
+    td,
+    th {
+        font-family: monospace;
+        border: 1px solid black;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 60%;
+        border: 2px solid black;
+    }
+
+    body,
+    html {
+        font-family: monospace;
+        font-size: 20px;
+    }
+
+    #btn1 {
+        background-color: rgb(39, 39, 255);
+        border-radius: 10px;
+        font-size: 25px;
+        color: white;
+        font-variant: small-caps;
+    }
+
+    .container {
+        background-color: gray;
+    }
+
+    .btn2:hover {
+        background-color: orange;
+    }
+
+    .btn2 {
+        background-color: green;
+        font-size: 17px;
+        border-radius: 5px;
+        font-family: monospace;
+    }
+
+    #btn3 {
+        background-color: green;
+        font-size: 20px;
+        border-radius: 5px;
+        font-family: monospace;
+    }
+
+    .animate {
+        background-color: rgb(39, 39, 255);
+        color: white;
+        border-radius: 10px;
+        font-size: 20px;
+        font-variant: small-caps;
+    }
+
+    .orange {
+        background-color: orange;
+    }
+
+    .changer {
+        background-color: green;
+    }
+
+    .add {
+        background-color: rgb(39, 39, 255);
+        color: white;
+        border-radius: 10px;
+        font-size: 20px;
+        font-variant: small-caps;
+    }
+
+    .delete {
+        background-color: rgb(39, 39, 255);
+        border-radius: 10px;
+        color: white;
+        font-size: 20px;
+        font-variant: small-caps;
+    }
+
+    .movers {
+        background-color: orangered;
+        border-radius: 10px;
+        color: white;
+        font-size: 20px;
+        font-variant: small-caps;
+    }
+
+    .acceptNum {
+        background-color: lightgrey;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .moved {
+        color: white;
+        font-variant: small-caps;
+        font-size: 30px;
+        width: 150px;
+        background-color: darkgray;
+        margin-left: 45%;
+    }
+
+    .scrollUp {
+        float: right;
+    }
+</style>
+
+<body class="back">
+    <div class="container">
+        <div class="right">
+            <input type="checkbox" value="checked" id="confirmation">
+            <label for="button"> I accept</label><br>
+            <input id="btn1" type="submit" value="Proceed" disabled="disabled">
+        </div>
+        <br>
+        <div class="right">
+            <table>
+                <tr class="changer">
+                    <th>Student</th>
+                    <th>Grade</th>
+                </tr>
+                <tr>
+                    <td>Mark</td>
+                    <td>1.2</td>
+                </tr>
+                <tr class="changer">
+                    <td>James</td>
+                    <td>2.2</td>
+                </tr>
+                <tr>
+                    <td>David</td>
+                    <td>1.6</td>
+                </tr>
+                <tr class="changer">
+                    <td>John</td>
+                    <td>2.0</td>
+                </tr>
+            </table>
+        </div>
+        <div class="right">
+            <button class="btn2">Change Alternate Color</button>
+        </div>
+        <br>
+        <div class="right">
+            <input type="text" class="inp" maxlength="15">
+            <p>
+                <span class="strings">15</span> Character(s) remaining.
+            </p>
+            <div class="appending">
+                <p class="sudlanan"></p>
+            </div>
+        </div>
+        <div class="right">
+            <button class="add">Add</button>
+            <select name="dropdown" id="dropdown">
+            </select>
+            <button class="delete">Remove</button>
+        </div>
+        <div class="right">
+            <input type="submit" value="Good Morning" id="btn3">
+        </div>
+        <div class="right">
+            <p>Input Number:<input type="text " class="acceptNum"></p>
+        </div>
+        <div class="right">
+            <p class="animated">jQuery</p>
+            <button class="animate">Animate</button>
+        </div>
+        <div class="right">
+            <button type="button" class="movers upMover">Up</button>
+            <button type="button" class="movers downMover">Down</button>
+            <button type="button" class="movers leftMover">Left</button>
+            <button type="button" class="movers rightMover">Right</button>
+        </div>
+        <button class="scrollUp movers">Scroll Up</button>
+    </div>
+    <div class="moved">
+        <div class="right ">This is movable Text Box!</div>
+    </div>
+
+</body>
+<script>
+    $(document).ready(function () {
+        $("#confirmation").on("click", function () {
+            $("#btn1").attr("disabled", !this.checked);
+        });
+        $(".btn2").on("click", function () {
+            $(".changer").css("background-color", "orange")
+        })
+        $(".inp").on("keyup", function () {
+            $(".sudlanan").text($(".inp").val())
+        })
+        var maxInput = 15;
+        $(".inp").on("keyup", function () {
+            var strLength = maxInput - $(this).val().length;
+            $(".strings").text(strLength);
+        })
+        $(".add").on("click", function () {
+            var inserted = $(".inp").val();
+            $("#dropdown").append('<option value="' + inserted + '">' + inserted + '</option>')
+        })
+        $(".delete").on("click", function () {
+            var deleter = $("#dropdown").val();
+            $('#dropdown option[value="' + deleter + '"]').remove();
+        })
+        $("#btn3").on("click", function () {
+            if ($("#btn3").val() == "Good Morning") {
+                $("#btn3").val("Good Evening");
+                $("#btn3").css("background-color", "orange")
+            } else {
+                $("#btn3").val("Good Morning")
+                $("#btn3").css("background-color", "green")
+
+            }
+        })
+        $('.animate').on("click",function () {
+            $(".animated").animate({
+                width: "100px",
+                opacity: 0.4,
+                marginLeft: "10px",
+                fontSize: "30px",
+            }, 1000);
+        })
+        $(".acceptNum").on("keyup", function () {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+        })
+        $(".rightMover").on("click", function () {
+            $('.moved').animate({
+                marginLeft: '+=40px'
+            });
+        })
+        $('.leftMover').on("click",function () {
+            $('.moved').animate({
+                marginLeft: '-=40px'
+            });
+        })
+
+        $('.upMover').on("click",function () {
+            $('.moved').animate({
+                marginTop: '-=40px'
+            });
+        })
+
+        $('.downMover').on("click", function () {
+            $('.moved').animate({
+                marginTop: '+=40px'
+            });
+        })
+        $(".scrollUp").on("click", function () {
+            $("html").animate({
+                scrollTop: 0
+            }, "slow");
+        })
+    })
+</script>
+
+</html>
